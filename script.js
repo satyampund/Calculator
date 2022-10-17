@@ -1,28 +1,30 @@
 let numOfButtons = document.querySelectorAll(".btn").length;
 let string = "";
-var switchBtn;
+var switchOn;
 let a = 1;
 
 
 document.querySelector(".on").addEventListener("click", function () {
 
     if (this.innerHTML == "ON") {
-        switchBtn = true;
-    }
-    else {
-        switchBtn = false;
+        switchOn = true;
+
     }
 
     if (a == 1) {
-        calOnOff();
+        calOn();
         a++;
     }
+})
 
+document.querySelector(".off").addEventListener("click", function () {
+    calOff();
 })
 
 
-function calOnOff() {
-    if (switchBtn == true) {
+function calOn() {
+
+    if (switchOn == true) {
 
         for (let i = 0; i < numOfButtons; i++) {
             document.querySelectorAll(".btn")[i].addEventListener("click", buttonClick);
@@ -54,6 +56,30 @@ function calOnOff() {
     }
 }
 
+
+
+function calOff() {
+
+    for (let i = 0; i < numOfButtons; i++) {
+        document.querySelectorAll(".btn")[i].addEventListener("click", buttonClick);
+
+    }
+    document.querySelector(".input-screen").value = "";
+    function buttonClick(e) {
+        if (e.target.innerHTML == "=") {
+            document.querySelector(".input-screen").value = "";
+        }
+        else {
+            document.querySelector(".input-screen").value = "";
+        }
+    }
+
+    document.querySelector(".clear").addEventListener("click", function () {
+        string = "";
+        document.querySelector(".input-screen").value = string;
+    })
+
+}
 
 
 
